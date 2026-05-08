@@ -15,9 +15,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserModel {
+    
     @Id
     @GeneratedValue
-
     long id;
     String username;
     String password;

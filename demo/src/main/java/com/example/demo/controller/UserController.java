@@ -2,22 +2,43 @@ package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.model.UserModel;
 import com.example.demo.service.UserService;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
 
+    @Autowired
     UserService userService;
+
     @GetMapping("/allUsers")
     public List<UserModel> getAllUsers() {
-        return userService.getAll();
+        return userService.getAllUsers();
     }
+
+    @PostMapping("/add")
+    public UserModel postMethodName(@RequestBody UserModel user) {
+        return userService.addNewUser(user);
+    
+    }
+    
+    @GetMapping("/user/{id}")
+        public UserModel getUser (@PathVariable Long id){
+            return  
+        }
+    
+    
+
 
 
     @GetMapping("/hello")
